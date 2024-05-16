@@ -1,12 +1,15 @@
 import { React, useState } from "react";
 import { Input } from "../../components/input/Input";
 import users from '../../api/users';
+import {useNavigate} from 'react-router-dom';
 
 export default function Register() {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: ''
+        username: 'kauan',
+        email: 'kauaanmatheus@gmail.com',
+        password: 'Kauan132'
     });
 
     const onInputFormData = e => {
@@ -18,12 +21,19 @@ export default function Register() {
 
     const sendForm = async () => {
         const postResponse = await users.post(formData);
+
+        if (postResponse.status === 201) {
+            sessionStorage.setItem('userId', postResponse.data._id);
+            sessionStorage.setItem('username', postResponse.data.username);
+
+            navigate('/home');
+        }
     }
 
     return <>
-        <Input placeholder={'username'} name={'username'} onInput={onInputFormData} />
-        <Input placeholder={'password'} name={'password'} onInput={onInputFormData} />
-        <Input placeholder={'email'} name={'email'} onInput={onInputFormData} />
+        <Input value={formData.username} placeholder={'username'} name={'username'} onInput={onInputFormData} />
+        <Input value={formData.password} placeholder={'password'} name={'password'} onInput={onInputFormData} />
+        <Input value={formData.email} placeholder={'email'} name={'email'} onInput={onInputFormData} />
         <button onClick={sendForm}>Cadastrar</button>
     </>
 }

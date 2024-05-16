@@ -13,8 +13,19 @@ const post = async (body) => {
     }
 }
 
+const login = async (body) => {
+    try {
+        const res = await axios.post(`${baseUrl}/${path}`, body);
+
+        return res;
+    } catch (e) {
+        return e.response.data.message;
+    }
+}
+
 const users = {
-    post
+    post,
+    login
 }
 
 export default users;
