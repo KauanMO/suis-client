@@ -3,9 +3,9 @@ import { baseUrl } from './config';
 
 const path = "classes";
 
-const post = async (body) => {
+const post = async body => {
     try {
-        const res = await axios.post(`${baseUrl}/${path}`);
+        const res = await axios.post(`${baseUrl}/${path}`, body);
 
         return res;
     } catch (e) {

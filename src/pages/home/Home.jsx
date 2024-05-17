@@ -1,8 +1,8 @@
 import React from "react";
-import { Title1 } from "../../components/text/Text";
+import Text from "../../components/text/Text";
 
 export default function Home() {
     return <>
-        <Title1>Olá, {sessionStorage.getItem('username')}!</Title1>
+        <Text.Title1>Olá, {sessionStorage.getItem('username')}!</Text.Title1>
     </>
 };

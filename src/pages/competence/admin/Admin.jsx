@@ -6,9 +6,9 @@ export default function Admin() {
     const [competencesNotConfirmed, setCompetencesNotConfirmed] = useState([]);
 
     const getCompetencesNotConfirmed = async () => {
-        const getResponse = await competences.notConfirmed();
+        const confirmedResponse = await competences.byConfirmed(false);
 
-        setCompetencesNotConfirmed(getResponse.data);
+        setCompetencesNotConfirmed(confirmedResponse.data);
     }
 
     useEffect(() => {
@@ -17,6 +17,7 @@ export default function Admin() {
 
     const confirmCompetence = async e => {
         await competences.confirm(e.target.id);
+
         getCompetencesNotConfirmed();
     }
 

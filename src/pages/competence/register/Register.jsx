@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Input } from "../../../components/input/Input";
+import Input from "../../../components/input/Input";
 import competencias from '../../../api/competence';
 
 export default function Register() {
@@ -21,7 +21,7 @@ export default function Register() {
     }
 
     return <>
-        <Input name={'name'} onInput={onInputForm} placeholder={'Competência'} value={formData.name} />
+        <Input.Default name={'name'} onInput={onInputForm} placeholder={'Competência'} value={formData.name} />
         <button onClick={sendForm}>Sugerir competência</button>
     </>
 }

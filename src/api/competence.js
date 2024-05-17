@@ -23,9 +23,9 @@ const confirm = async (id) => {
     }
 }
 
-const notConfirmed = async () => {
+const byConfirmed = async confirmed => {
     try {
-        const res = await axios.get(`${url}/not-confirmed`);
+        const res = await axios.get(`${url}/by-confirmed?confirmed=${confirmed}`);
 
         return res;
     } catch (e) {
@@ -36,7 +36,7 @@ const notConfirmed = async () => {
 const competences = {
     post,
     confirm,
-    notConfirmed
+    byConfirmed
 }
 
 export default competences;
