@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import Input from "../../../components/input/Input";
 import competences from '../../../api/competence';
 import classes from '../../../api/classes';
+import classCompetencesAPI from '../../../api/classCompetences';
 
 export default function Register() {
     const [competencesConfirmed, setCompetencesConfirmed] = useState([]);
@@ -31,10 +32,22 @@ export default function Register() {
         });
     }
 
-    const sendForm = async () => {
+    const sendClassForm = async () => {
         const classResponse = await classes.post(formData);
 
-        console.log(classResponse);
+        sendClassCompetencesForm(classResponse.data.id);
+    }
+
+    const sendClassCompetencesForm = async classId => {
+        const classCompetencesResponse = await classCompetencesAPI.post({
+            class2: {
+                id: classId
+            },
+            assignedBy: 'Kauan',
+            competences: classCompetences
+        });
+
+        console.log(classCompetencesResponse);
     }
 
     const findCompetence = e => {
@@ -71,6 +84,6 @@ export default function Register() {
                     : 'Nenhuma competência confirmada encontrada'
             }
         </div>
-        <button onClick={sendForm}>Cadastrar aula</button>
+        <button onClick={sendClassForm}>Cadastrar aula</button>
     </>
 }
