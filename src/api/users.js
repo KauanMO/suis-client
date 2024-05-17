@@ -15,7 +15,7 @@ const post = async (body) => {
 
 const login = async (body) => {
     try {
-        const res = await axios.post(`${baseUrl}/${path}`, body);
+        const res = await axios.post(`${baseUrl}/${path}/login`, body);
 
         return res;
     } catch (e) {
