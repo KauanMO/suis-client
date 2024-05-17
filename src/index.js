@@ -4,6 +4,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Register from './pages/register/Register';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
+import ClassRegister from './pages/class/register/Register';
+import CompetenceRegister from './pages/competence/register/Register';
+import CompetenceAdmin from './pages/competence/admin/Admin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -13,7 +16,18 @@ const router = createBrowserRouter([
     children: [
       { path: '', element: <Register /> },
       { path: 'home', element: <Home /> },
-      { path: 'login', element: <Login /> }
+      { path: 'login', element: <Login /> },
+      {
+        path: 'class', children: [
+          { path: 'register', element: <ClassRegister /> }
+        ]
+      },
+      {
+        path: 'competence', children: [
+          { path: 'register', element: <CompetenceRegister /> },
+          { path: 'admin', element: <CompetenceAdmin /> }
+        ]
+      }
     ]
   }
 ])
