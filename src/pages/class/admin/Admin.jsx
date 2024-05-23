@@ -6,18 +6,24 @@ import classes from '../../../api/classes';
 export default function Admin() {
     const [classesNotConfirmed, setClassesNotConfirmed] = useState([]);
 
+    async function getClassesNotConfirmed() {
+        const res = await classes.byConfirmed(false);
+
+        setClassesNotConfirmed(res.data);
+    }
+
     useEffect(() => {
-        async function findAllNotConfirmed() {
-            const res = await classes.byConfirmed(false);
-
-            setClassesNotConfirmed(res.data);
-        }
-
-        findAllNotConfirmed();
+        getClassesNotConfirmed();
     }, []);
 
-    const confirmClass = e => {
-        console.log(e.target.id);
+    const confirmClass = async e => {
+        const res = await classes.confirm(e.target.id);
+
+        if (res.status === 200) {
+            console.log(`Aula ${res.data.title} confirmada`);
+        }
+
+        setClassesNotConfirmed(classesNotConfirmed.filter(c => c.id !== e.target.id));
     }
 
     return <>

@@ -23,9 +23,20 @@ const byConfirmed = async confirmed => {
     }
 }
 
+const confirm = async id => {
+    try {
+        const res = await axios.patch(`${url}/${id}`);
+
+        return res
+    } catch (e) {
+        return e.response.data.message;
+    }
+}
+
 const classes = {
     post,
-    byConfirmed
+    byConfirmed,
+    confirm
 }
 
 export default classes;

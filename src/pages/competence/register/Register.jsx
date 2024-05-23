@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import Input from "../../../components/input/Input";
-import competencias from '../../../api/competence';
+import competencias from '../../../api/competences';
 
 export default function Register() {
     sessionStorage.setItem('userId', '664613ab47aef80aa00f6dbd');

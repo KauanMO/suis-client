@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import competences from "../../../api/competence";
+import competences from "../../../api/competences";
 import Card from "../../../components/card/Card";
 
 export default function Admin() {
@@ -16,9 +16,13 @@ export default function Admin() {
     }, []);
 
     const confirmCompetence = async e => {
-        await competences.confirm(e.target.id);
+        const res = await competences.confirm(e.target.id);
 
-        getCompetencesNotConfirmed();
+        if (res.status === 200) {
+            console.log(`Competência ${res.data.name} confirmada`);
+        }
+
+        setCompetencesNotConfirmed(competencesNotConfirmed.filter(c => c.id !== e.target.id));
     }
 
     return <>

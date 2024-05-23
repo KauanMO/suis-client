@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import Input from "../../../components/input/Input";
-import competences from '../../../api/competence';
+import competences from '../../../api/competences';
 import classes from '../../../api/classes';
 import classCompetencesAPI from '../../../api/classCompetences';
 
