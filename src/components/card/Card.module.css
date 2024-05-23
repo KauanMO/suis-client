@@ -3,3 +3,9 @@
     flex-direction: column;
     width: 20%;
 }
+
+.class {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}

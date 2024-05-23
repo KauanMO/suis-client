@@ -22,11 +22,12 @@ export default function Admin() {
     }
 
     return <>
-        {competencesNotConfirmed
-            ? competencesNotConfirmed.map(competence => {
-                return <Card.Competence key={competence} confirmCompetence={confirmCompetence} adminPage={true} competence={competence} />
-            })
-            : 'Sem competências não aprovadas'
+        {
+            competencesNotConfirmed
+                ? competencesNotConfirmed.map(competence => {
+                    return <Card.Competence key={competence} confirmCompetence={confirmCompetence} adminPage={true} competence={competence} />
+                })
+                : 'Sem competências não aprovadas'
         }
     </>
 }

@@ -5,6 +5,7 @@ import Register from './pages/register/Register';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import ClassRegister from './pages/class/register/Register';
+import ClassAdmin from './pages/class/admin/Admin';
 import CompetenceRegister from './pages/competence/register/Register';
 import CompetenceAdmin from './pages/competence/admin/Admin';
 
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       {
         path: 'class', children: [
-          { path: 'register', element: <ClassRegister /> }
+          { path: 'register', element: <ClassRegister /> },
+          { path: 'admin', element: <ClassAdmin /> }
         ]
       },
       {
