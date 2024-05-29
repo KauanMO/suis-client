@@ -8,6 +8,7 @@ import ClassRegister from './pages/class/register/Register';
 import ClassAdmin from './pages/class/admin/Admin';
 import CompetenceRegister from './pages/competence/register/Register';
 import CompetenceAdmin from './pages/competence/admin/Admin';
+import AcceptClass from './pages/class/acceptClass/AcceptClass';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       {
         path: 'class', children: [
           { path: 'register', element: <ClassRegister /> },
-          { path: 'admin', element: <ClassAdmin /> }
+          { path: 'admin', element: <ClassAdmin /> },
+          { path: 'acceptClass/:classId/:userId', element: < AcceptClass /> }
         ]
       },
       {

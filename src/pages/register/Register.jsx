@@ -9,7 +9,8 @@ export default function Register() {
     const [formData, setFormData] = useState({
         username: 'kauan',
         email: 'kauaanmatheus@gmail.com',
-        password: 'Kauan132'
+        password: 'Kauan132',
+        tutor: true
     });
 
     const onInputFormData = e => {

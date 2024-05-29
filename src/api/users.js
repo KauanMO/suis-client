@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { baseUrl } from './config';
 
-const path = "users";
+const url = `${baseUrl}/users`;
 
 const post = async (body) => {
     try {
-        const res = await axios.post(`${baseUrl}/${path}`, body);
+        const res = await axios.post(url, body);
 
         return res;
     } catch (e) {
@@ -15,7 +15,7 @@ const post = async (body) => {
 
 const login = async (body) => {
     try {
-        const res = await axios.post(`${baseUrl}/${path}/login`, body);
+        const res = await axios.post(`${url}/login`, body);
 
         return res;
     } catch (e) {
@@ -23,9 +23,27 @@ const login = async (body) => {
     }
 }
 
+const findById = async id => {
+    try {
+        const res = await axios.get(`${url}/${id}`);
+
+        return res;
+    } catch (e) {
+        return e.response.data.message;
+    }
+}
+
+const confirmPassword = async (id, password) => {
+    const res = await axios.post(`${url}/confirm-password/${id}`, { password });
+
+    return res;
+}
+
 const users = {
     post,
-    login
+    login,
+    byId: findById,
+    confirmPassword
 }
 
 export default users;
